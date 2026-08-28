@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axion-ui  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axion-ui
+  template:
+    metadata:
+      labels:
+        app: axion-ui 
+    spec:
+      containers:
+        - name: axion-uicontainer
+          image: us-central1-docker.pkg.dev/project-a1c51fe0-43ef-44f5-a46/axionsystemar99/axion-axion-ui:v2
+          ports:
+            - containerPort: 80
+          

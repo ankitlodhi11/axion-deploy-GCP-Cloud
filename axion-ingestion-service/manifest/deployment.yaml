@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axioningestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axioningestion
+  template:
+    metadata:
+      labels:
+        app: axioningestion
+    spec:
+      containers:
+        - name: ingestioncontainer
+          image: us-central1-docker.pkg.dev/project-a1c51fe0-43ef-44f5-a46/axionsystemar99/axion-ingestion:v2
+          ports:
+            - containerPort: 8000
+          

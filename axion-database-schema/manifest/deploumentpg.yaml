@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axionpgadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axionpgadmin
+  template:
+    metadata:
+      labels:
+        app: axionpgadmin
+    spec:
+      containers:
+        - name: pgadmincontainer
+          image: dpage/pgadmin4:latest
+          ports:
+            - containerPort: 80
+          env:
+            
+            - name: PGADMIN_DEFAULT_EMAIL
+              value: "admin@axion.com"
+
+            - name: PGADMIN_DEFAULT_PASSWORD
+              value: "root@123"

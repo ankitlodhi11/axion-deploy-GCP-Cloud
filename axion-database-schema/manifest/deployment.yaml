@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axionpostgress-pgdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axion-database
+  template:
+    metadata:
+      labels:
+        app: axion-database
+    spec:
+      containers:
+        - name: pgcontainer
+          image: postgres:17
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: axiondb
+
+            - name: POSTGRES_USER
+              value: postgres
+
+            - name: POSTGRES_PASSWORD
+              value: "root@123"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: axionpgadmin
+spec:
+  type: ClusterIP   # Agar direct UI pod/Ingress se connect ho raha hai
+  selector:
+    app: axionpgadmin   # Dhyaan dein: Ye label telemetry deployment ke template labels se match hona chahiye
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

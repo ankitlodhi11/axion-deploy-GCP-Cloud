@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: axionsimulator  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: axionsimulator
+  template:
+    metadata:
+      labels:
+        app: axionsimulator 
+    spec:
+      containers:
+        - name: simulatorcontainer
+          image: us-central1-docker.pkg.dev/project-a1c51fe0-43ef-44f5-a46/axionsystemar99/axion-simulator:v1
+          env:
+            - name: API_URL
+              value: "http://azioningestion-service:8000/api/v1/telemetry/ingest"
+
+            - name: INTERVAL_SECONDS
+              value: "5"  
