@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: axion-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    networking.gke.io/managed-certificates: "axion-ssl-certificate"
+    # HTTP se HTTPS par auto-redirect ke liye:
+    networking.gke.io/v1beta1.FrontendConfig: "axion-frontend-config"
+spec:
+  rules:
+  - host: phohajaleabi.shop
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: axion-ui       # <-- Yahan aapki Frontend/UI service ka naam aayega
+            port:
+              number: 80                # <-- UI service ka port

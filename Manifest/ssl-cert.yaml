@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: axion-ssl-certificate
+spec:
+  domains:
+    - phohajaleabi.shop
